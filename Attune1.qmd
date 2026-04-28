@@ -16,9 +16,10 @@ library(Luciernaga)
 
 Computer <- getwd()
 MainFolder <- file.path(Computer, "data")
-TheList <- c("Aria")
+TheList <- c("Attune1")
 
-#MainFolder <- "/home/david/Documents/InstrumentQC/data"
+# RMI - It should be possible to copy the required QC files to the J: or Z: drive we could then use this as the MainFolder
+# MainFolder <- "/home/david/Documents/InstrumentQC/data"
 
 CSTGates <- file.path(Computer, "Gates.csv")
 
@@ -28,29 +29,31 @@ walk(.x=TheList, .f=Luciernaga:::HolisticQCParse, MainFolder=MainFolder, Templat
 
 ```{r}
 #MainFolder <- "/home/david/Documents/InstrumentQC/data"
-AriaData <- Luciernaga:::CurrentData(x=TheList, MainFolder=MainFolder, type = "Both")
-TheDate <- AriaData %>% slice(1) %>% pull(DATE)
+Attune1Data <- Luciernaga:::CurrentData(x=TheList, MainFolder=MainFolder, type = "Both")
+TheDate <- Attune1Data %>% slice(1) %>% pull(DATE)
 ```
 
 ```{r}
 WindowOfInterest <- Sys.time() - months(24)
 
-Both_Aria <- AriaData %>% filter(DateTime >= WindowOfInterest)
+Both_Attune1 <- Attune1Data %>% filter(DateTime >= WindowOfInterest)
 ```
 
 ```{r}
-Data <- read.csv("AuroraMaintenance.csv", check.names=FALSE)
+# RMI this routine is loading in a maintenance log and potentially adding to it Comment out for now 04262026
 
-#Data <- read.csv("/home/david/Documents/InstrumentQC/AuroraMaintenance.csv", check.names=FALSE)
-
-Data <- Data %>% filter(!str_detect(reason, "lean"))
-
-RepairAria <- Data %>% filter(instrument %in% "Aria")
-Maintenance <- RepairAria
+# Data <- read.csv("AuroraMaintenance.csv", check.names=FALSE)
+# 
+# #Data <- read.csv("/home/david/Documents/InstrumentQC/AuroraMaintenance.csv", check.names=FALSE)
+# 
+# Data <- Data %>% filter(!str_detect(reason, "lean"))
+# 
+# RepairAttune1 <- Data %>% filter(instrument %in% "Attune1")
+# Maintenance <- RepairAttune1
 ```
 
 ```{r}
-x <- Both_Aria
+x <- Both_Attune1
 TheColumns <- x %>% select(where(~is.numeric(.)||is.integer(.))) %>% colnames()
 TheColumns <- setdiff(TheColumns, "TIME")
 
@@ -75,32 +78,32 @@ OtherGains <- c(ScatterGains, LaserGains, ScalingGains)
 VioletPlotsMFI <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=VioletGains,
                       plotType = "individual", returntype = "plots",
                       Metadata="NULL", strict = TRUE, YAxisLabel = "MFI",
-                      RepairVisits=RepairAria)
+                      RepairVisits=RepairAttune1)
 
 BluePlotsMFI <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=BlueGains,
                       plotType = "individual", returntype = "plots",
                       Metadata=NULL, strict = TRUE, YAxisLabel = "MFI",
-                      RepairVisits=RepairAria)
+                      RepairVisits=RepairAttune1)
 
 YellowGreenPlotsMFI <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=YellowGreenGains,
                      plotType = "individual", returntype = "plots",
                      Metadata=NULL, strict = TRUE, YAxisLabel = "MFI",
-                     RepairVisits=RepairAria)                      
+                     RepairVisits=RepairAttune1)                      
 
 RedPlotsMFI <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=RedGains,
                      plotType = "individual", returntype = "plots",
                      Metadata=NULL, strict = TRUE, YAxisLabel = "MFI",
-                     RepairVisits=RepairAria)
+                     RepairVisits=RepairAttune1)
 
 ScatterPlotsMFI <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=ScatterGains,
                      plotType = "individual", returntype = "plots",
                      Metadata=NULL, strict = TRUE, YAxisLabel = " ",
-                     RepairVisits=RepairAria)
+                     RepairVisits=RepairAttune1)
 
 LaserPlotsMFI <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=LaserGains,
                      plotType = "individual", returntype = "plots",
                      Metadata=NULL, strict = TRUE, YAxisLabel = " ",
-                     RepairVisits=RepairAria)
+                     RepairVisits=RepairAttune1)
 ```
 
 
@@ -148,7 +151,7 @@ ScatterPlotsRCV <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=ScatterGains,
 ```
 
 ```{r}
-x <- Both_Aria
+x <- Both_Attune1
 TheColumns <- x %>% select(where(~is.numeric(.)||is.integer(.))) %>% colnames()
 TheColumns <- setdiff(TheColumns, "TIME")
 
@@ -171,32 +174,32 @@ OtherGains <- c(ScatterGains, LaserGains, ScalingGains)
 
 VioletPlotsGain <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=VioletGains,
                       plotType = "individual", returntype = "plots", YAxisLabel = "Gain",
-                      RepairVisits=RepairAria)
+                      RepairVisits=RepairAttune1)
 
 BluePlotsGain <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=BlueGains,
                       plotType = "individual", returntype = "plots", YAxisLabel = "Gain",
-                      RepairVisits=RepairAria)
+                      RepairVisits=RepairAttune1)
 
 YellowGreenPlotsGain <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=YellowGreenGains,
                      plotType = "individual", returntype = "plots", YAxisLabel = "Gain",
-                     RepairVisits=RepairAria)
+                     RepairVisits=RepairAttune1)
 
 
 RedPlotsGain <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=RedGains,
                      plotType = "individual", returntype = "plots", YAxisLabel = "Gain",
-                     RepairVisits=RepairAria)
+                     RepairVisits=RepairAttune1)
 
 ScatterPlotsGain <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=ScatterGains,
                      plotType = "individual", returntype = "plots", YAxisLabel = " ",
-                     RepairVisits=RepairAria)
+                     RepairVisits=RepairAttune1)
 
 LaserPlotsGain <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=LaserGains,
                      plotType = "individual", returntype = "plots", YAxisLabel = " ",
-                     RepairVisits=RepairAria)
+                     RepairVisits=RepairAttune1)
 
 ScalingPlotsGain <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=ScalingGains,
                      plotType = "individual", returntype = "plots", YAxisLabel = " ",
-                     RepairVisits=RepairAria)
+                     RepairVisits=RepairAttune1)
 ```
 
 ```{r}
@@ -204,20 +207,20 @@ ScalingPlotsGain <- QC_Plots(x=x, FailedFlag=FALSE, MeasurementType=ScalingGains
 #| echo: false
 PDFPlots <- c(VioletPlotsMFI, BluePlotsMFI, YellowGreenPlotsMFI, RedPlotsMFI, ScatterPlotsMFI, VioletPlotsGain, BluePlotsGain, YellowGreenPlotsGain, RedPlotsGain, ScatterPlotsGain, LaserPlotsGain, ScalingPlotsGain, VioletPlotsRCV, BluePlotsRCV, YellowGreenPlotsRCV, RedPlotsRCV, ScatterPlotsRCV)
 
-Filename <- paste0("QCPlots_Aria")
+Filename <- paste0("QCPlots_Attune1")
 
 PDF <- Utility_Patchwork(x=PDFPlots, filename=Filename, returntype="pdf", outfolder=MainFolder, thecolumns=1)
 ```
 
 ## {.sidebar}
-Dashboard data for the **BD FACSAria II** last updated on **`r TheDate`**
+Dashboard data for the **Attune1 II** last updated on **`r TheDate`**
 
 **First Column: MFI** Median Fluorescent Intensity (MFI) values for the QC beads. Measures stability over time. 
 
 
 **Second Column: Gain** Gain (Voltage) values set for instrument after QC. Changes over time reflective of laser health. 
 
-**Third Colum: RCV** Percentage change of Robust Coefficient Variation (RCV) after QC. Higher values reflect decreased resolution between positive and negative for that detector.
+**Third Colum: RCV** Percentage change of Robust Coefficient VAttune1tion (RCV) after QC. Higher values reflect decreased resolution between positive and negative for that detector.
 
 For additional information concerning individual parameter tabs, navigate to the [Help](https://umgccfcss.github.io/InstrumentQC/help) page.
 
