@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Lasers ModelNumber="0A29009">
+<FlowRate Rate="12.5">
+<Laser LaserNumber="0" LaserDelay="1100" PeakWidth="0" AreaScalingFactor="1.18477" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="1" LaserDelay="1484" PeakWidth="0" AreaScalingFactor="0.975257" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="2" LaserDelay="726" PeakWidth="0.37065" AreaScalingFactor="1.11277" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="3" LaserDelay="357" PeakWidth="0" AreaScalingFactor="1.13591" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ </FlowRate>
+<FlowRate Rate="25">
+<Laser LaserNumber="0" LaserDelay="1100" PeakWidth="0" AreaScalingFactor="1.18477" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="1" LaserDelay="1484" PeakWidth="0" AreaScalingFactor="0.975257" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="2" LaserDelay="726" PeakWidth="0.37065" AreaScalingFactor="1.11277" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="3" LaserDelay="357" PeakWidth="0" AreaScalingFactor="1.13591" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ </FlowRate>
+<FlowRate Rate="100">
+<Laser LaserNumber="0" LaserDelay="1100" PeakWidth="0" AreaScalingFactor="1.18477" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="1" LaserDelay="1484" PeakWidth="0" AreaScalingFactor="0.975257" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="2" LaserDelay="726" PeakWidth="0.37065" AreaScalingFactor="1.11277" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="3" LaserDelay="357" PeakWidth="0" AreaScalingFactor="1.13591" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ </FlowRate>
+<FlowRate Rate="200">
+<Laser LaserNumber="0" LaserDelay="1100" PeakWidth="0" AreaScalingFactor="1.18477" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="1" LaserDelay="1484" PeakWidth="0" AreaScalingFactor="0.975257" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="2" LaserDelay="726" PeakWidth="0.37065" AreaScalingFactor="1.11277" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="3" LaserDelay="357" PeakWidth="0" AreaScalingFactor="1.13591" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ </FlowRate>
+<FlowRate Rate="500">
+<Laser LaserNumber="0" LaserDelay="1100" PeakWidth="0" AreaScalingFactor="1.06055" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="1" LaserDelay="1499" PeakWidth="0" AreaScalingFactor="0.903708" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="2" LaserDelay="711" PeakWidth="0.37065" AreaScalingFactor="1.0062" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="3" LaserDelay="327" PeakWidth="1.11195" AreaScalingFactor="1.02476" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ </FlowRate>
+<FlowRate Rate="1000">
+<Laser LaserNumber="0" LaserDelay="1100" PeakWidth="0" AreaScalingFactor="1.07328" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="1" LaserDelay="1491" PeakWidth="1.11195" AreaScalingFactor="0.920005" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="2" LaserDelay="719" PeakWidth="2.2239" AreaScalingFactor="1.02026" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ <Laser LaserNumber="3" LaserDelay="343" PeakWidth="2.2239" AreaScalingFactor="1.03316" AreaScalingFactorOverride="-1" UseAreaScalingFactorOverride="false" WindowExtension="0" WindowExtensionOverride="-2147483648" UseWindowExtensionOverride="false" />
+ </FlowRate>
+</Lasers>

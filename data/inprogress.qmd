@@ -1,0 +1,35 @@
+---
+title: "Working through David Rach's notes on the QC website"
+author: "David Rach get credit RMI editing"
+date: 04-25-2026
+format: html
+toc: true
+toc-depth: 5
+---
+
+ David suggests installing R on all the cytometer computers.  I would like to avoid doing this and simply take advantage of windows tool to set-up a 'cron job' like task to copy the essentail files from individual workstations to a common site. The windows task scheduler tool seems like the tool to use.  
+
+```{r}
+# packages to install
+
+# CRAN packages
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("devtools")
+install.packages("BiocManager")
+
+#Bioconductor packages
+library(BiocManager)
+install("flowCore")
+install("flowWorkspace")
+install("ggcyto")
+
+#Git hub packages
+library(devtools)
+# Updated call to install Luciernaga based on warning message that install_github was deprecated
+pak::pak("https://github.com/DavidRach/Luciernaga", dependencies = TRUE)
+```
+
+```{r}
+
+```
