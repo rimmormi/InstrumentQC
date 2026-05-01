@@ -1,0 +1,86 @@
+---
+---
+
+```{r}
+#' The goal of this code is to re-format QC data into a standard CSV format 
+#' 
+#' David Rach at the UMGCC FCSS developed a website to display the Daily QC for the core's instrument.  In
+#' addition to the homepage pass fail indications David tracks the performane using Levey-Jennings Plots. 
+#' This looks like a nice bit of Instrument analysis that it would be great to bring to the UNC Flow Core.
+#' 
+#' 4/30/2026
+#' We are trying to piece together the steps and so far we have working code to process Cytek Aurora  
+#' QC files into a CSV format using Luciernaga:::QC_FilePrep_DailyQC
+#' 
+
+# Library Calls
+library(dplyr)
+library(purrr)
+library(stringr)
+library(plotly)
+library(Luciernaga)
+
+# Define Path to all the Instrument QC data 
+Data <- file.path("C:","Users", "Bob", "Documents", "R-coding", "UNC-Flow-Core-QC-website", "Instrument QCs")
+
+# Define Path, and output location/filename for each instrument
+AuroraData <- file.path(Data, "Aurora")
+AuroraArchive <- file.path(AuroraData, "Archive", "ArchivedDataAurora.csv")
+
+Attune1Data <- file.path(Data, "Attune1")
+Attune1Archive <- file.path(Attune1Data, "Archive", "Attune1Archive.csv")
+
+Attune2Data <- file.path(Data, "Attune2")
+Attune2Archive <- file.path(Attune2Data, "Archive", "Attune2Archive.csv")
+
+FortessaData <- file.path(Data, "Fortessa")
+FortessaArchive <- file.path(FortessaData, "Archive", "FortessaArchive.csv")
+
+MelodyData <- file.path(Data, "Melody")
+MelodyArchive <- file.path(MelodyData, "Archive", "MelodyArchive.csv")
+
+AriaIIData <- file.path(Data, "AriaII")
+AriaIIArchive <- file.path(AriaIIData, "Archive", "AriaIIArchive.csv")
+
+S6Data <- file.path(Data, "S6")
+S6Archive <- file.path(S6Data, "Archive", "S6Archive.csv")
+
+# Define search Patterns to find file of interest in case of mixed files in Data folders
+CSV_Pattern <- ".CSV$"
+Attune_Results_Pattern <- "Results.XML$"
+Attune_LaserDelay_Pattern <- "LaserDelay.XML$"
+FCS_Pattern <- ".fcs$"
+
+# Generate a Vector with the data files of interest 
+Aurora_CSV_Files <- list.files(path=AuroraData, pattern=CSV_Pattern, full.name=TRUE, ignore.case = TRUE)
+Aurora_FCS_Files <- list.files(path=AuroraData, pattern=FCS_Pattern, full.name=TRUE, ignore.case = TRUE)
+
+Attune1_Results_Files <- list.files(path=Attune1Data, pattern=Attune_Results_Pattern, full.name=TRUE, ignore.case = TRUE)
+Attune1_Delay_Files <- list.files(path=Attune1Data, pattern=Attune_LaserDelay_Pattern, full.name=TRUE, ignore.case = TRUE)
+
+Attune2_Results_Files <- list.files(path=Attune2Data, pattern=Attune_Results_Pattern, full.name=TRUE, ignore.case = TRUE)
+Attune2_Delay_Files <- list.files(path=Attune2Data, pattern=Attune_LaserDelay_Pattern, full.name=TRUE, ignore.case = TRUE)
+
+Fortessa_CSV_Files <- list.files(path=FortessaData, pattern=CSV_Pattern, full.name=TRUE, ignore.case = TRUE)
+
+Melody_CSV_Files <- list.files(path=MelodyData, pattern=CSV_Pattern, full.name=TRUE, ignore.case = TRUE)
+
+AriaII_CSV_Files <- list.files(path=AriaIIData, pattern=CSV_Pattern, full.name=TRUE, ignore.case = TRUE)
+
+S6_CSV_Files <- list.files(path=S6Data, pattern=CSV_Pattern, full.name=TRUE, ignore.case = TRUE)
+
+# Process QC files to a TidyCSV similar to those in David's website Data/"Instrument"/Archive folder
+AuroraTidyData <- map_dfr(Aurora_CSV_Files, QC_FilePrep_DailyQC)
+# We may need to generate a gating scheme to get MFI data out of the Aurora .fcs files -- Skip for now
+
+# Attune1TidyData <- map_dfr(Attune1_Results_Files & Attune1_Delay_Files, Function to Format these XMLs)
+# Attune2TidyData <- map_dfr(Attune2_Results_Files & Attune2_Delay_Files, Function to Format these XMLs)
+# FortessaTidyData <- map_dfr(Fortessa_CSV_Files, Function to Format these CSVs)
+# MelodyTidyData <- map_dfr(Melody_CSV_Files, Function to Format these CSVs)
+# AriaIITidyData <- map_dfr(AriaII_CSV_Files, Function to Format these CSVs)
+# S6TidyData <- map_dfr(S6_CSV_Files, Function to Format these CSVs) 
+
+# Output the processed files
+write.csv(AuroraTidyData, AuroraArchive, row.names=FALSE)
+```
+
